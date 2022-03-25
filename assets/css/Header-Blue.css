@@ -27,7 +27,13 @@
     padding-bottom: 1rem;
   }
 }
-
+.dot {
+  height: 14px;
+  width: 14px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
 .header-blue .navbar .navbar-brand {
   font-weight: bold;
   color: inherit;
