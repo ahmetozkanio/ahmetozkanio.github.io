@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: ahmetozkanio.github.io
+Token: 304ab211e499f7dd3e22c0be7f5e95d1641aeadd3e7a0df344ca5ec2dd88d280
