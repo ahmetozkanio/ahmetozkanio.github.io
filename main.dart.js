@@ -66379,8 +66379,8 @@ s[1]=B.d.fB(s[1])
 s[2]=B.d.fB(s[2])
 s[3]=B.d.fB(s[3])}}
 A.G1.prototype={
-N(a){var s=null,r=t.z
-return new A.vC("/home","ahmetozkanio",$.asT(),!1,new A.ul(new A.ZK()),A.a([A.ai_(s,s,s,B.mJ,B.mL,B.ad,s,!1,s,!0,s,"/home",!0,new A.ZL(),s,s,s,!0,!0,s,s,s,s,r),A.ai_(s,s,s,B.mJ,B.mL,B.ad,s,!1,s,!0,s,"/project/:name",!0,new A.ZM(),s,s,s,!0,!0,s,s,s,s,r)],t.RT),s)}}
+N(a){var s="/flutter-web-page",r=null,q=t.z
+return new A.vC(s,"ahmetozkanio",$.asT(),!1,new A.ul(new A.ZK()),A.a([A.ai_(r,r,r,B.mJ,B.mL,B.ad,r,!1,r,!0,r,s,!0,new A.ZL(),r,r,r,!0,!0,r,r,r,r,q),A.ai_(r,r,r,B.mJ,B.mL,B.ad,r,!1,r,!0,r,"/project/:name",!0,new A.ZM(),r,r,r,!0,!0,r,r,r,r,q)],t.RT),r)}}
 A.ZK.prototype={
 $0(){var s=$.bG()
 A.ai6(s,new A.ZH(),t.B1)
