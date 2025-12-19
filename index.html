@@ -16,6 +16,8 @@
     <!-- Font Awesome -->
     <link rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- jsPDF for CV generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <!-- Tailwind CSS -->
     <script
       src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -182,8 +184,8 @@
                 <span class="material-symbols-outlined text-[18px]">mail</span>
                 Email Me
               </a>
-              <a
-                class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-xs font-bold h-10 px-4 rounded shadow-md transition-colors"
+              <a id="cvBtn"
+                class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-xs font-bold h-10 px-4 rounded shadow-md transition-colors cursor-pointer"
                 href="#">
                 <span
                   class="material-symbols-outlined text-[18px]">download</span>

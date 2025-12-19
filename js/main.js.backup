@@ -304,61 +304,201 @@ function updateLinks(links) {
 }
 
 // Generate and download CV as PDF
-
 // Generate and download CV as PDF
 function generateCV(data) {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
   
-  let y = 20;
+  let yPosition = 20;
+  const lineHeight = 7;
+  const pageWidth = doc.internal.pageSize.width;
+  const margin = 20;
+  const maxWidth = pageWidth - 2 * margin;
+  
+  // Helper function to add text with word wrap
+  function addText(text, fontSize = 12, isBold = false) {
+    doc.setFontSize(fontSize);
+    if (isBold) {
+      doc.setFont('helvetica', 'bold');
+    } else {
+      doc.setFont('helvetica', 'normal');
+    }
+    
+    const lines = doc.splitTextToSize(text, maxWidth);
+    doc.text(lines, margin, yPosition);
+    yPosition += lines.length * lineHeight;
+    return lines.length * lineHeight;
+  }
+  
+  // Helper function to add section header
+  function addSectionHeader(title) {
+    yPosition += 5;
+    addText(title, 14, true);
+    yPosition += 2;
+  }
   
   // Title
-  doc.setFontSize(20);
-  doc.setFont('helvetica', 'bold');
-  doc.text(data.profile.name, 20, y);
-  y += 10;
-  
-  doc.setFontSize(16);
-  doc.setFont('helvetica', 'normal');
-  doc.text(data.profile.title, 20, y);
-  y += 15;
+  addText(data.profile.name, 20, true);
+  addText(data.profile.title, 16);
+  yPosition += 5;
   
   // Bio
-  doc.setFontSize(12);
-  const bioLines = doc.splitTextToSize(data.profile.bio, 170);
-  doc.text(bioLines, 20, y);
-  y += bioLines.length * 5 + 10;
+  addText(data.profile.bio);
+  yPosition += 5;
   
-  // Contact
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text('CONTACT', 20, y);
-  y += 8;
-  
-  doc.setFontSize(12);
-  doc.setFont('helvetica', 'normal');
-  doc.text(`Email: ${data.profile.links.email}`, 20, y);
-  y += 6;
-  doc.text(`LinkedIn: ${data.profile.links.linkedin}`, 20, y);
-  y += 6;
-  doc.text(`GitHub: ${data.profile.links.github}`, 20, y);
-  y += 15;
+  // Contact Info
+  addSectionHeader('CONTACT');
+  addText(`Email: ${data.profile.links.email}`);
+  addText(`LinkedIn: ${data.profile.links.linkedin}`);
+  addText(`GitHub: ${data.profile.links.github}`);
+  yPosition += 5;
   
   // Tech Stack
-  doc.setFontSize(14);
-  doc.setFont('helvetica', 'bold');
-  doc.text('TECH STACK', 20, y);
-  y += 8;
+  addSectionHeader('TECH STACK');
+  const techText = data.techStack.join(', ');
+  addText(techText);
+  yPosition += 5;
   
-  doc.setFontSize(12);
-  doc.setFont('helvetica', 'normal');
-  doc.text(data.techStack.join(', '), 20, y);
-  y += 15;
+  // Experience
+  addSectionHeader('EXPERIENCE');
+  data.experience.forEach(exp => {
+    const duration = exp.endDate === 'Present' ? 
+      `${exp.startDate} - Present` : 
+      `${exp.startDate} - ${exp.endDate}`;
+    
+    addText(`${exp.position} at ${exp.company}`, 12, true);
+    addText(`${exp.location} | ${duration}`);
+    addText(exp.description);
+    yPosition += 3;
+  });
   
-  // Download
+  // Education
+  addSectionHeader('EDUCATION');
+  data.education.forEach(edu => {
+    addText(`${edu.degree} in ${edu.field}`, 12, true);
+    addText(`${edu.university}, ${edu.location}`);
+    addText(`${edu.startYear} - ${edu.endYear} | GPA: ${edu.gpa}`);
+    yPosition += 3;
+  });
+  
+  // Projects
+  addSectionHeader('PROJECTS');
+  data.indieApps.forEach(project => {
+    addText(project.name, 12, true);
+    addText(project.description);
+    if (project.platforms && project.platforms.length > 0) {
+      const platforms = project.platforms.map(p => p.label).join(', ');
+      addText(`Platforms: ${platforms}`);
+    }
+    yPosition += 3;
+  });
+  
+  // Open Source Projects
+  data.openSourceProjects.forEach(project => {
+    addText(project.name, 12, true);
+    addText(project.description);
+    yPosition += 3;
+  });
+  
+  // Download the PDF
   doc.save(`${data.profile.name.replace(' ', '_')}_CV.pdf`);
 }
-
+  console.log('jsPDF instance created:', doc);
+  
+  let yPosition = 20;
+  const lineHeight = 7;
+  const pageWidth = doc.internal.pageSize.width;
+  const margin = 20;
+  const maxWidth = pageWidth - 2 * margin;
+  
+  // Helper function to add text with word wrap
+  function addText(text, fontSize = 12, isBold = false) {
+    doc.setFontSize(fontSize);
+    if (isBold) {
+      doc.setFont('helvetica', 'bold');
+    } else {
+      doc.setFont('helvetica', 'normal');
+    }
+    
+    const lines = doc.splitTextToSize(text, maxWidth);
+    doc.text(lines, margin, yPosition);
+    yPosition += lines.length * lineHeight;
+    return lines.length * lineHeight;
+  }
+  
+  // Helper function to add section header
+  function addSectionHeader(title) {
+    yPosition += 5;
+    addText(title, 14, true);
+    yPosition += 2;
+  }
+  
+  // Title
+  addText(data.profile.name, 20, true);
+  addText(data.profile.title, 16);
+  yPosition += 5;
+  
+  // Bio
+  addText(data.profile.bio);
+  yPosition += 5;
+  
+  // Contact Info
+  addSectionHeader('CONTACT');
+  addText(`Email: ${data.profile.links.email}`);
+  addText(`LinkedIn: ${data.profile.links.linkedin}`);
+  addText(`GitHub: ${data.profile.links.github}`);
+  yPosition += 5;
+  
+  // Tech Stack
+  addSectionHeader('TECH STACK');
+  const techText = data.techStack.join(', ');
+  addText(techText);
+  yPosition += 5;
+  
+  // Experience
+  addSectionHeader('EXPERIENCE');
+  data.experience.forEach(exp => {
+    const duration = exp.endDate === 'Present' ? 
+      `${exp.startDate} - Present` : 
+      `${exp.startDate} - ${exp.endDate}`;
+    
+    addText(`${exp.position} at ${exp.company}`, 12, true);
+    addText(`${exp.location} | ${duration}`);
+    addText(exp.description);
+    yPosition += 3;
+  });
+  
+  // Education
+  addSectionHeader('EDUCATION');
+  data.education.forEach(edu => {
+    addText(`${edu.degree} in ${edu.field}`, 12, true);
+    addText(`${edu.university}, ${edu.location}`);
+    addText(`${edu.startYear} - ${edu.endYear} | GPA: ${edu.gpa}`);
+    yPosition += 3;
+  });
+  
+  // Projects
+  addSectionHeader('PROJECTS');
+  data.indieApps.forEach(project => {
+    addText(project.name, 12, true);
+    addText(project.description);
+    if (project.platforms && project.platforms.length > 0) {
+      const platforms = project.platforms.map(p => p.label).join(', ');
+      addText(`Platforms: ${platforms}`);
+    }
+    yPosition += 3;
+  });
+  
+  // Open Source Projects
+  data.openSourceProjects.forEach(project => {
+    addText(project.name, 12, true);
+    addText(project.description);
+    yPosition += 3;
+  });
+  
+  // Download the PDF
+  doc.save(`${data.profile.name.replace(' ', '_')}_CV.pdf`);
+}
 function updateStatusBar(user) {
   const statusLocation = document.getElementById('statusLocation');
   const statusBirthday = document.getElementById('statusBirthday');
