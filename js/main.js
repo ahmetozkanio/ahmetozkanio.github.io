@@ -342,6 +342,8 @@ function generateCV(data) {
   doc.text(`LinkedIn: ${data.profile.links.linkedin}`, 20, y);
   y += 6;
   doc.text(`GitHub: ${data.profile.links.github}`, 20, y);
+  y += 6;
+  doc.text(`Portfolio: ${data.profile.links.portfolio}`, 20, y);
   y += 15;
   
   // Tech Stack
