@@ -1,0 +1,221 @@
+{
+    "profile": {
+        "name": "Ahmet ÖZKAN",
+        "title": "iOS Developer",
+        "bio": "iOS Developer with 4 years of experience delivering subscription-based applications using SwiftUI and UIKit. Skilled in in-app purchases, localization, theme management, modular architecture, and App Store Optimization (ASO) to boost visibility and user engagement. Passionate about creating high-performance, user-focused mobile experiences from concept to launch.",
+        "image": "https://avatars.githubusercontent.com/u/65506828?s=400&u=ffc481d60828d5c04a6659a169cb68b70d259def&v=4",
+        "location": "Ankara, Türkiye",
+        "birthday": "5/10/99",
+        "links": {
+            "github": "https://www.github.com/ahmetozkanio",
+            "linkedin": "https://www.linkedin.com/in/ahmetozkanio",
+            "email": "ahmetozkanio@yahoo.com",
+            "appstore": "https://apps.apple.com/us/developer/ahmet-ozkan/id1772304555",
+            "playstore": "https://play.google.com/store/apps/developer?id=ahmetozkanio",
+            "medium": "https://www.medium.com/@ahmetozkanio",
+            "x": "https://www.x.com/@ahmetozkanio",
+            "instagram": "https://www.instagram.com/ahmetozkanio",
+            "youtube": "https://www.youtube.com/@ahmetozkanio"
+        }
+    },
+    "techStack": [
+        "Swift",
+        "SwiftUI",
+        "UIKit",
+        "Flutter",
+        "Android"
+    ],
+    "indieApps": [
+        {
+            "id": 1,
+            "name": "Habitio",
+            "date": "2024",
+            "description": "Track your daily habits and build a better version of yourself. Focus on consistency with intuitive habit tracking.",
+            "icon": "images/habitio.png",
+            "platforms": [
+                {
+                    "label": "App Store",
+                    "url": "https://apps.apple.com/app/habitio-focus-track-habits/id6736531215",
+                    "icon": "ios"
+                },
+                {
+                    "label": "Play Store",
+                    "url": "https://play.google.com/store/apps/details?id=com.ahmetozkanio.habit",
+                    "icon": "android"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "WordHunter",
+            "date": "2025",
+            "description": "WordHunter helps you add words you encounter, take notes, and master them with Spaced Repetition.",
+            "icon": "images/wordhunter.png",
+            "platforms": [
+                {
+                    "label": "App Store",
+                    "url": "https://apps.apple.com/us/app/learn-vocabulary-wordhunter/id6747953351",
+                    "icon": "ios"
+                }
+            ]
+        }
+    ],
+    "openSourceProjects": [
+        {
+            "id": 1,
+            "name": "Netflix Clone App",
+            "date": "2023",
+            "description": "The application was programmatically developed, seamlessly integrating with the TMDB API and designed to adhere to the principles of the MVVM architecture.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/netflix-clone-app.png",
+            "github": "https://github.com/ahmetozkanio/netflix-clone-swift-uikit",
+            "tools": [
+                "iOS",
+                "Swift"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Travel Guide App",
+            "date": "2022",
+            "description": "An application that lists project articles, hotels and flights, and saves them as bookmarks. It can also be searched.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/travel-guide-swift.png",
+            "github": "https://github.com/ahmetozkanio/travel-guide-app-mvvm-fmss-patika-graduation-project",
+            "tools": [
+                "iOS",
+                "Swift",
+                "MVVM"
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Portfolio App",
+            "date": "2022",
+            "description": "Portfolio application where all data is provided via API. You can fork this project, update the API side and use it.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/portfolio-app-flutter.png",
+            "github": "https://github.com/ahmetozkanio/portfolio-app-flutter",
+            "tools": [
+                "Flutter",
+                "Figma"
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Travel Template App",
+            "date": "2022",
+            "description": "The design was taken for free from Figma and coded as a dynamic project with Flutter.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/travel-app-flutter.png",
+            "github": "https://github.com/ahmetozkanio/travel-app-flutter",
+            "tools": [
+                "Flutter",
+                "Figma",
+                "API"
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Barber Appointment App",
+            "date": "2021",
+            "description": "A barber appointment application coded in Java with Firebase login and Firestore operations. Design made with Adobe XD.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/barber-appointment-android.png",
+            "github": "https://github.com/ahmetozkanio/Berber-Randevu-Android-Java",
+            "tools": [
+                "Android",
+                "Firebase",
+                "Java"
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Student Attendance Analysis",
+            "date": "2021",
+            "description": "Application using data through API with the backend created with Django. Features polling with QR code camera.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/student-flutter.png",
+            "github": "https://github.com/ahmetozkanio/student_project_bitirme_flutter",
+            "tools": [
+                "Flutter",
+                "Django",
+                "QRCode"
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Plant Information App",
+            "date": "2021",
+            "description": "A mobile project displaying information on 395 plants. Ready for Google Play Store upload as APK.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/plant-info-android.png",
+            "github": "https://github.com/ahmetozkanio/Bitki_Bilgi_Sistemi_AndroidStudio",
+            "tools": [
+                "Android",
+                "Adobe XD"
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Student Course Platform",
+            "date": "2021",
+            "description": "System for student engagement analysis where students and teachers can follow lessons. Web (Django) and mobile (Flutter) versions.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/student-django.png",
+            "github": "https://github.com/ahmetozkanio/student_project_bitirme_django",
+            "tools": [
+                "Django",
+                "Flutter",
+                "WebSockets"
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Furniture Store",
+            "date": "2022",
+            "description": "Full-stack furniture store project with Django. Features language support, product management, admin panel, AWS S3 integration.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/furniture-django.png",
+            "github": "https://github.com/ahmetozkanio/furniture-store-full-stack-django",
+            "tools": [
+                "Django",
+                "AWS",
+                "Bootstrap"
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Plant Info Admin Panel",
+            "date": "2021",
+            "description": "Information management and CRUD operations for 395 plants with JavaFX admin panel interface.",
+            "icon": "https://raw.githubusercontent.com/ahmetozkanio/custom-api-public/main/my-site/images/plant-info-javafx.png",
+            "github": "https://github.com/ahmetozkanio/Plant_Information_System_JavaFx",
+            "tools": [
+                "Java",
+                "JavaFX"
+            ]
+        }
+    ],
+    "experience": [
+        {
+            "company": "SEBIT Education and Information Technologies Inc.",
+            "title": "iOS Developer",
+            "startDate": "12/2022",
+            "endDate": "Present",
+            "location": "Ankara, Türkiye",
+            "employmentType": "Full-time",
+            "locationType": "Hybrid"
+        },
+        {
+            "company": "Iskenderun Technical University",
+            "title": "Flutter Developer - INTERN",
+            "startDate": "02/2022",
+            "endDate": "06/2022",
+            "location": "Iskenderun, Türkiye",
+            "employmentType": "Internship",
+            "locationType": "On-site"
+        }
+    ],
+    "education": [
+        {
+            "university": "Iskenderun Technical University",
+            "licence": "BSc in Computer Engineering",
+            "startDate": "2018",
+            "endDate": "2022",
+            "location": "Iskenderun, Türkiye",
+            "graduate": "3.2/4"
+        }
+    ]
+}

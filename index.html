@@ -1,134 +1,376 @@
-<!DOCTYPE html><html><head>
-    <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>ahmetozkanio Portfolio</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Tailwind CSS -->
+    <script
+      src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#308ce8",
+                        "primary-dark": "#1a6bb5",
+                        "background-light": "#f0f2f5",
+                        "background-dark": "#111921",
+                        "window-light": "#ffffff",
+                        "window-dark": "#1a2632",
+                        "border-light": "#111418",
+                        "border-dark": "#344150",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"]
+                    },
+                    boxShadow: {
+                        "retro": "4px 4px 0px 0px #111418",
+                        "retro-hover": "2px 2px 0px 0px #111418",
+                        "retro-dark": "4px 4px 0px 0px #000000",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark body {
+            background-image: radial-gradient(#334155 1px, transparent 1px);
+        }
+        
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: #e2e8f0;
+        }
+        .dark ::-webkit-scrollbar {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #308ce8;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            border-color: #0f172a;
+        }
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-    <base href="https://ahmetozkanio.github.io/">
-    <!-- <base href="/"> -->
-
-    <meta charset="UTF-8">
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="description"
-      content="Ahmet Özkan's personal website. Learn about development, technology, and much more.">
-    <meta name="keywords"
-      content="Ahmet Özkan, Personal Blog, Developer, Flutter, iOS Development, Technology, iOS, indie, SwiftUI, UIKit">
-    <meta name="author" content="Ahmet Özkan">
-
-    <!-- iOS meta tags & icons -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="ahmetozkanio">
-    <link rel="apple-touch-icon" href="favicon.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <title>ahmetozkanio</title>
-    <link rel="manifest" href="manifest.json">
-
-    <script>
-    // The value below is injected by flutter build, do not touch.
-    var serviceWorkerVersion = "2056895303";
-  </script>
-    <!-- This script adds the flutter initialization JS code -->
-    <script src="flutter.js" defer></script>
-
-    <meta
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-      name="viewport">
-
-    <style id="splash-screen-style">
-    html {
-      height: 100%
-    }
-
-    body {
-      margin: 0;
-      min-height: 100%;
-      background-color: #F9FAEF;
-          background-size: 100% 100%;
-    }
-
-    .center {
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
-
-    .contain {
-      display:block;
-      width:100%; height:100%;
-      object-fit: contain;
-    }
-
-    .stretch {
-      display:block;
-      width:100%; height:100%;
-    }
-
-    .cover {
-      display:block;
-      width:100%; height:100%;
-      object-fit: cover;
-    }
-
-    .bottom {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      -ms-transform: translate(-50%, 0);
-      transform: translate(-50%, 0);
-    }
-
-    .bottomLeft {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-    }
-
-    .bottomRight {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: #12140E;
-          }
-    }
-  </style>
-    <script id="splash-screen-script">
-    function removeSplashFromWeb() {
-      document.getElementById("splash")?.remove();
-      document.getElementById("splash-branding")?.remove();
-      document.body.style.background = "transparent";
-    }
-  </script>
+        .scanlines {
+            background: linear-gradient(
+                to bottom,
+                rgba(255,255,255,0),
+                rgba(255,255,255,0) 50%,
+                rgba(0,0,0,0.02) 50%,
+                rgba(0,0,0,0.02)
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+        }
+    </style>
   </head>
-  <body>
-    <picture id="splash">
-      <source
-        srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x"
-        media="(prefers-color-scheme: light)">
-      <source
-        srcset="splash/img/dark-1x.png 1x, splash/img/dark-2x.png 2x, splash/img/dark-3x.png 3x, splash/img/dark-4x.png 4x"
-        media="(prefers-color-scheme: dark)">
-      <img class="center" aria-hidden="true" src="splash/img/light-1x.png" alt>
-    </picture>
+  <body
+    class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col overflow-x-hidden text-[#111418] dark:text-gray-100">
+    <div
+      class="scanlines fixed inset-0 z-50 pointer-events-none h-full w-full"></div>
 
-    <script src="flutter_bootstrap.js" async></script>
+    <!-- Top OS Bar -->
+    <header
+      class="fixed top-0 left-0 w-full z-40 bg-[#eef0f2] dark:bg-[#1a2632] border-b-2 border-border-light dark:border-border-dark px-4 h-12 flex items-center justify-between shadow-sm">
+      <div class="flex items-center gap-6">
+        <a id="headerEmailLink"
+          class="font-bold text-lg select-none cursor-pointer hover:text-primary transition-colors"
+          href="mailto:ahmetozkanio@yahoo.com">
+          @ahmetozkanio
+        </a>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-sm font-mono opacity-60 hidden sm:block"
+          id="currentTime">10:42 AM</span>
+        <button id="darkModeToggle"
+          class="flex items-center justify-center w-10 h-10 rounded border-2 border-border-light dark:border-border-dark bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+          title="Toggle dark mode">
+          <span class="material-symbols-outlined text-[18px] text-yellow-500"
+            id="darkModeIcon">light_mode</span>
+        </button>
+      </div>
+    </header>
 
-  </body></html>
+    <!-- Main Desktop Area -->
+    <main
+      class="flex-grow pt-24 pb-12 px-4 md:px-8 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left Column: Profile (Window 1) -->
+      <section class="lg:col-span-4 lg:sticky lg:top-24 space-y-8">
+        <!-- Profile Window -->
+        <div id="profileWindow"
+          class="bg-window-light dark:bg-window-dark rounded-lg border-2 border-border-light dark:border-border-dark shadow-retro dark:shadow-retro-dark overflow-hidden flex flex-col">
+          <!-- Window Title Bar -->
+          <div
+            class="bg-gradient-to-r from-[#e0e0e0] to-[#f5f5f5] dark:from-[#2d3748] dark:to-[#1a202c] border-b-2 border-border-light dark:border-border-dark px-3 py-2 flex items-center justify-between cursor-grab active:cursor-grabbing">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <span
+                class="material-symbols-outlined text-[14px]">account_circle</span>
+              User_Profile
+            </span>
+            <div class="flex gap-1.5">
+              <div
+                class="w-3 h-3 rounded-full border border-border-light bg-red-400"></div>
+              <div
+                class="w-3 h-3 rounded-full border border-border-light bg-yellow-400"></div>
+              <div
+                class="w-3 h-3 rounded-full border border-border-light bg-green-400"></div>
+            </div>
+          </div>
+
+          <!-- Profile Content -->
+          <div class="p-6 flex flex-col items-center text-center">
+            <div class="relative w-32 h-32 mb-6 group">
+              <div
+                class="absolute inset-0 bg-primary rounded-full opacity-20 group-hover:scale-110 transition-transform duration-300"></div>
+              <div id="profileImage"
+                class="relative w-full h-full rounded-full border-4 border-white dark:border-gray-700 shadow-lg overflow-hidden bg-cover bg-center"
+                style="background-size: cover;"></div>
+              <div
+                class="absolute bottom-0 right-0 bg-green-500 border-2 border-white w-6 h-6 rounded-full"
+                title="Online"></div>
+            </div>
+            <h1 id="profileName"
+              class="text-2xl font-bold text-[#111418] dark:text-white mb-1">Ahmet</h1>
+            <p id="profileTitle"
+              class="text-primary font-medium mb-4 font-mono text-sm">&lt;iOS
+              Developer /&gt;</p>
+            <p id="profileBio"
+              class="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
+              Building retro-futuristic experiences for the Apple ecosystem.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="w-full grid grid-cols-2 gap-3">
+              <a id="githubBtn"
+                class="flex items-center justify-center gap-2 bg-[#f0f2f4] dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-[#111418] dark:text-white text-xs font-bold h-10 px-4 rounded border-b-4 border-r-4 border-transparent hover:border-gray-300 transition-all"
+                href="#">
+                <i class="fa-brands fa-github text-[18px]"></i>
+                GitHub
+              </a>
+              <a id="linkedinBtn"
+                class="flex items-center justify-center gap-2 bg-[#f0f2f4] dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-[#111418] dark:text-white text-xs font-bold h-10 px-4 rounded border-b-4 border-r-4 border-transparent hover:border-gray-300 transition-all"
+                href="#">
+                <i class="fa-brands fa-linkedin text-[18px]"></i>
+                LinkedIn
+              </a>
+              <a id="emailBtn"
+                class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-xs font-bold h-10 px-4 rounded shadow-md transition-colors"
+                href="mailto:hello@ahmet.dev">
+                <span class="material-symbols-outlined text-[18px]">mail</span>
+                Email Me
+              </a>
+              <a
+                class="flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white text-xs font-bold h-10 px-4 rounded shadow-md transition-colors"
+                href="#">
+                <span
+                  class="material-symbols-outlined text-[18px]">download</span>
+                CV
+              </a>
+
+              <!-- Additional Social Links -->
+              <div
+                class="col-span-2 flex items-center justify-center gap-2 pt-2">
+                <a id="appstoreBtn" href="#" target="_blank"
+                  class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  title="App Store">
+                  <i
+                    class="fa-brands fa-app-store text-gray-600 dark:text-gray-300"></i>
+                </a>
+                <a id="playstoreBtn" href="#" target="_blank"
+                  class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  title="Play Store">
+                  <i
+                    class="fa-brands fa-google-play text-gray-600 dark:text-gray-300"></i>
+                </a>
+                <a id="mediumBtn" href="#" target="_blank"
+                  class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  title="Medium">
+                  <i
+                    class="fa-brands fa-medium text-gray-600 dark:text-gray-300"></i>
+                </a>
+                <a id="xBtn" href="#" target="_blank"
+                  class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  title="X (Twitter)">
+                  <i
+                    class="fa-brands fa-x-twitter text-gray-600 dark:text-gray-300"></i>
+                </a>
+                <a id="instagramBtn" href="#" target="_blank"
+                  class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  title="Instagram">
+                  <i
+                    class="fa-brands fa-instagram text-gray-600 dark:text-gray-300"></i>
+                </a>
+                <a id="youtubeBtn" href="#" target="_blank"
+                  class="w-8 h-8 flex items-center justify-center rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  title="YouTube">
+                  <i
+                    class="fa-brands fa-youtube text-gray-600 dark:text-gray-300"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Status Bar -->
+          <div
+            class="bg-gray-100 dark:bg-gray-800 border-t border-border-light dark:border-border-dark px-3 py-1 flex justify-between text-[10px] font-mono text-gray-500">
+            <span id="statusLocation">Status: Available for hire</span>
+            <span id="statusBirthday">Mem: 64MB</span>
+          </div>
+        </div>
+
+        <!-- Tech Stack Window -->
+        <div
+          class="bg-window-light dark:bg-window-dark rounded-lg border-2 border-border-light dark:border-border-dark shadow-retro dark:shadow-retro-dark overflow-hidden">
+          <div
+            class="bg-gradient-to-r from-[#e0e0e0] to-[#f5f5f5] dark:from-[#2d3748] dark:to-[#1a202c] border-b-2 border-border-light dark:border-border-dark px-3 py-2 flex items-center justify-between">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[14px]">code</span>
+              Tech Stack
+            </span>
+          </div>
+          <div id="techStack" class="p-4 flex flex-wrap gap-2">
+            <!-- Populated from JSON -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Column: Content (Windows 2 & 3) -->
+      <div class="lg:col-span-8 space-y-8">
+        <!-- Projects Window -->
+        <section
+          class="bg-window-light dark:bg-window-dark rounded-lg border-2 border-border-light dark:border-border-dark shadow-retro dark:shadow-retro-dark overflow-hidden flex flex-col">
+          <div
+            class="bg-gradient-to-r from-[#e0e0e0] to-[#f5f5f5] dark:from-[#2d3748] dark:to-[#1a202c] border-b-2 border-border-light dark:border-border-dark px-3 py-2 flex items-center justify-between">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <span
+                class="material-symbols-outlined text-[14px]">grid_view</span>
+              Applications_Folder
+            </span>
+            <div
+              class="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+          </div>
+
+          <!-- Tabs -->
+          <div
+            class="bg-[#f0f2f4] dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700 px-4 pt-4 flex gap-1">
+            <button id="indieAppsTab"
+              class="projectTab px-4 py-2 bg-window-light dark:bg-window-dark border-t border-l border-r border-gray-300 dark:border-gray-600 rounded-t-lg -mb-[1px] z-10 font-bold text-sm text-primary flex items-center gap-2 transition-all"
+              data-tab="indie">
+              <span
+                class="material-symbols-outlined text-[16px]">smartphone</span>
+              Indie Apps
+            </button>
+            <button id="openSourceTab"
+              class="projectTab px-4 py-2 bg-transparent text-gray-500 hover:bg-black/5 dark:hover:bg-white/5 rounded-t-lg font-medium text-sm flex items-center gap-2 transition-colors"
+              data-tab="opensource">
+              <span
+                class="material-symbols-outlined text-[16px]">folder_open</span>
+              Open Source
+            </button>
+          </div>
+
+          <!-- Projects Grid (Indie Apps) -->
+          <div id="indieAppsGrid"
+            class="projectContent p-6 grid grid-cols-1 md:grid-cols-2 gap-6 bg-[#fafafa] dark:bg-[#151f28]">
+            <!-- Populated from JSON -->
+          </div>
+
+          <!-- Projects Grid (Open Source) -->
+          <div id="openSourceGrid"
+            class="projectContent hidden bg-[#fafafa] dark:bg-[#151f28]"
+            style="display: none; overflow-x: auto;">
+            <!-- Populated from JSON with horizontal scroll -->
+          </div>
+        </section>
+
+        <!-- Experience Window -->
+        <section
+          class="bg-window-light dark:bg-window-dark rounded-lg border-2 border-border-light dark:border-border-dark shadow-retro dark:shadow-retro-dark overflow-hidden flex flex-col">
+          <div
+            class="bg-gradient-to-r from-[#e0e0e0] to-[#f5f5f5] dark:from-[#2d3748] dark:to-[#1a202c] border-b-2 border-border-light dark:border-border-dark px-3 py-2 flex items-center justify-between">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[14px]">work</span>
+              Experience
+            </span>
+          </div>
+
+          <div class="p-8">
+            <div id="experienceTimeline"
+              class="relative border-l-2 border-dashed border-gray-300 dark:border-gray-700 ml-3 space-y-10">
+              <!-- Populated from JSON -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Education Window -->
+        <section
+          class="bg-window-light dark:bg-window-dark rounded-lg border-2 border-border-light dark:border-border-dark shadow-retro dark:shadow-retro-dark overflow-hidden flex flex-col">
+          <div
+            class="bg-gradient-to-r from-[#e0e0e0] to-[#f5f5f5] dark:from-[#2d3748] dark:to-[#1a202c] border-b-2 border-border-light dark:border-border-dark px-3 py-2 flex items-center justify-between">
+            <span
+              class="text-xs font-bold uppercase tracking-wider text-gray-600 dark:text-gray-300 flex items-center gap-2">
+              <span class="material-symbols-outlined text-[14px]">school</span>
+              Education
+            </span>
+            <div
+              class="w-3 h-3 rounded-full bg-gray-300 dark:bg-gray-600"></div>
+          </div>
+
+          <div class="p-8">
+            <div id="educationTimeline"
+              class="relative border-l-2 border-dashed border-gray-300 dark:border-gray-700 ml-3 space-y-10">
+              <!-- Populated from JSON -->
+            </div>
+          </div>
+
+          <!-- Terminal Footer -->
+          <div
+            class="bg-black text-green-400 p-3 font-mono text-xs border-t-2 border-border-light dark:border-border-dark">
+            <p>&gt; Loading complete.</p>
+            <p class="animate-pulse">&gt; _</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="bg-white dark:bg-[#111921] border-t border-gray-200 dark:border-gray-800 py-6 mt-auto">
+      <div
+        class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-4">
+        <div class="text-sm text-gray-500">
+          © ahmetozkanio
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
