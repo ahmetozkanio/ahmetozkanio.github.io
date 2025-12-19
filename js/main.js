@@ -355,6 +355,57 @@ function generateCV(data) {
   doc.text(data.techStack.join(', '), 20, y);
   y += 15;
   
+  // Experience
+  if (data.experience && data.experience.length > 0) {
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('EXPERIENCE', 20, y);
+    y += 8;
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    data.experience.forEach(exp => {
+      doc.setFont('helvetica', 'bold');
+      doc.text(`${exp.position} at ${exp.company}`, 20, y);
+      y += 6;
+      
+      doc.setFont('helvetica', 'normal');
+      const duration = `${exp.startDate} - ${exp.endDate}`;
+      doc.text(`${duration} | ${exp.location}`, 20, y);
+      y += 6;
+      
+      const descLines = doc.splitTextToSize(exp.description, 170);
+      doc.text(descLines, 20, y);
+      y += descLines.length * 5 + 8;
+    });
+    
+    y += 5;
+  }
+  
+  // Education
+  if (data.education && data.education.length > 0) {
+    doc.setFontSize(14);
+    doc.setFont('helvetica', 'bold');
+    doc.text('EDUCATION', 20, y);
+    y += 8;
+    
+    doc.setFontSize(12);
+    doc.setFont('helvetica', 'normal');
+    
+    data.education.forEach(edu => {
+      doc.setFont('helvetica', 'bold');
+      doc.text(`${edu.degree} in ${edu.field}`, 20, y);
+      y += 6;
+      
+      doc.setFont('helvetica', 'normal');
+      doc.text(`${edu.university}, ${edu.location}`, 20, y);
+      y += 6;
+      doc.text(`${edu.startYear} - ${edu.endYear} | GPA: ${edu.gpa}`, 20, y);
+      y += 8;
+    });
+  }
+  
   // Download
   doc.save(`${data.profile.name.replace(' ', '_')}_CV.pdf`);
 }
