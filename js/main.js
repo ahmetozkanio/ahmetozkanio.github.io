@@ -73,15 +73,12 @@ function populateProjects(data) {
   // Populate Open Source
   const openSourceGrid = document.getElementById('openSourceGrid');
   openSourceGrid.innerHTML = '';
-  openSourceGrid.className = 'projectContent hidden p-6 bg-[#fafafa] dark:bg-[#151f28]';
-  openSourceGrid.style.overflowX = 'auto';
+  openSourceGrid.className = 'projectContent hidden p-6 bg-[#fafafa] dark:bg-[#151f28] overflow-x-auto';
   openSourceGrid.style.display = 'none';
   
   if (data.openSourceProjects) {
     const container = document.createElement('div');
     container.className = 'flex gap-6';
-    container.style.display = 'flex';
-    container.style.padding = '0';
     container.style.minWidth = 'min-content';
     
     data.openSourceProjects.forEach(project => {
@@ -143,33 +140,35 @@ function createIndieAppCard(project) {
 
 function createOpenSourceCard(project) {
   const div = document.createElement('div');
-  div.className = 'flex-shrink-0 w-96 bg-white dark:bg-[#1e2a38] border border-gray-200 dark:border-gray-700 rounded-lg p-4 hover:shadow-lg transition-shadow duration-300';
+  div.className = 'flex-shrink-0 w-80 group bg-white dark:bg-[#1e2a38] border border-gray-200 dark:border-gray-700 rounded-lg p-4 flex flex-col hover:shadow-lg transition-shadow duration-300';
   
   let toolsHTML = '';
-  if (project.tools) {
-    project.tools.forEach(tool => {
-      toolsHTML += `<span class="px-2 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded">${tool}</span>`;
-    });
+  if (project.tools && project.tools.length > 0) {
+    toolsHTML = `
+      <div class="flex flex-wrap gap-2 mb-4">
+        ${project.tools.map(tool => `<span class="px-2 py-1 text-xs font-mono bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded">${tool}</span>`).join('')}
+      </div>
+    `;
   }
   
   div.innerHTML = `
-    <div class="flex items-start justify-between mb-3">
-      <div class="w-20 h-20 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-600 flex items-center justify-center overflow-hidden shadow-sm">
+    <div class="flex items-start justify-between mb-4">
+      <div class="w-16 h-16 rounded-xl bg-white dark:bg-black border border-gray-200 dark:border-gray-700 flex items-center justify-center overflow-hidden shadow-sm">
         <img class="w-full h-full object-cover" src="${project.icon}" alt="${project.name}">
       </div>
-      <span class="text-xs font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-gray-500 border border-gray-200 dark:border-gray-700">
+      <div class="text-[10px] font-semibold text-gray-400">
         ${project.date}
-      </span>
+      </div>
     </div>
-    <h3 class="font-bold text-base mb-2 text-primary">${project.name}</h3>
-    <p class="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">${project.description}</p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      ${toolsHTML}
+    <h3 class="font-bold text-lg mb-1 group-hover:text-primary transition-colors">${project.name}</h3>
+    <p class="text-sm text-gray-500 dark:text-gray-400 mb-4 flex-grow">${project.description}</p>
+    ${toolsHTML}
+    <div class="flex gap-2 mt-auto">
+      <a href="${project.github}" target="_blank" class="flex-1 bg-black text-white hover:bg-gray-800 text-[10px] font-bold py-2 rounded flex items-center justify-center gap-1 transition-colors">
+        <span class="material-symbols-outlined text-[14px]">code</span>
+        GitHub
+      </a>
     </div>
-    <a href="${project.github}" target="_blank" class="w-full flex items-center justify-center gap-2 bg-black dark:bg-gray-900 hover:bg-gray-800 dark:hover:bg-gray-800 text-white text-xs font-bold py-2 rounded transition-colors">
-      <span class="material-symbols-outlined text-[16px]">code</span>
-      View on GitHub
-    </a>
   `;
   
   return div;
@@ -428,13 +427,14 @@ function updateStatusBar(user) {
 
 // Update current time in header
 function updateTime() {
-  const now = new Date();
-  const hours = String(now.getHours()).padStart(2, '0');
-  const minutes = String(now.getMinutes()).padStart(2, '0');
-  const ampm = now.getHours() >= 12 ? 'PM' : 'AM';
+  // Yerel saat - 24 saatlik format
+  const localTime = new Date().toLocaleString('tr-TR', { 
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
   
-  const timeString = `${hours === '00' || hours === '12' ? '12' : hours % 12}:${minutes} ${ampm}`;
-  document.getElementById('currentTime').textContent = timeString;
+  document.getElementById('currentTime').textContent = localTime;
 }
 
 // Dark mode toggle
@@ -482,7 +482,7 @@ function initDarkModeToggle() {
 function updateDarkModeIcon(isDark) {
   const icon = document.getElementById('darkModeIcon');
   if (icon) {
-    icon.textContent = isDark ? 'dark_mode' : 'light_mode';
+    icon.textContent = isDark ? 'light_mode' : 'dark_mode';
   }
 }
 
