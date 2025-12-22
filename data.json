@@ -23,26 +23,23 @@
         "Swift",
         "SwiftUI",
         "UIKit",
+        "iOS",
         "Flutter",
-        "Android"
+        "Android",
+        "Django"
     ],
     "indieApps": [
         {
             "id": 1,
-            "name": "Habitio",
-            "date": "2024",
-            "description": "Track your daily habits and build a better version of yourself. Focus on consistency with intuitive habit tracking.",
-            "icon": "images/habitio.png",
+            "name": "BreakCycle",
+            "date": "2025",
+            "description": "Break reminder app for 20-20-20 eye care, stand-up prompts, and Pomodoro sessions. ",
+            "icon": "images/breakcycle.png",
             "platforms": [
                 {
                     "label": "App Store",
-                    "url": "https://apps.apple.com/app/habitio-focus-track-habits/id6736531215",
+                    "url": "https://apps.apple.com/tr/app/breakcycle-pomodoro-timer/id6756520883",
                     "icon": "ios"
-                },
-                {
-                    "label": "Play Store",
-                    "url": "https://play.google.com/store/apps/details?id=com.ahmetozkanio.habit",
-                    "icon": "android"
                 }
             ]
         },
@@ -57,6 +54,25 @@
                     "label": "App Store",
                     "url": "https://apps.apple.com/us/app/learn-vocabulary-wordhunter/id6747953351",
                     "icon": "ios"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Habitio",
+            "date": "2024",
+            "description": "Track your daily habits and build a better version of yourself. Focus on consistency with intuitive habit tracking.",
+            "icon": "images/habitio.png",
+            "platforms": [
+                {
+                    "label": "App Store",
+                    "url": "https://apps.apple.com/app/habitio-focus-track-habits/id6736531215",
+                    "icon": "ios"
+                },
+                {
+                    "label": "Play Store",
+                    "url": "https://play.google.com/store/apps/details?id=com.ahmetozkanio.habit",
+                    "icon": "android"
                 }
             ]
         }
